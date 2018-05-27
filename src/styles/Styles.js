@@ -126,5 +126,23 @@ export default StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  cameraContainer:{
+    flex : 1,
+    flexDirection : 'column'
+  },
+  view:{
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  capture:{
+    flex: 0,
+    backgroundColor: 'steelblue',
+    alignItems: 'center',
+    borderRadius: 10,
+    color: 'red',
+    padding: 15,
+    margin: 45
   }
 });
