@@ -1,0 +1,7 @@
+CRUD
+modal component
+sesion iniciada
+iniciar sesion
+Usar camara
+Empaquetar fotos
+Descrgar archivos
