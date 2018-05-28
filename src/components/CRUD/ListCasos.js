@@ -5,7 +5,7 @@ View,
 Platform,
 Text,
 FlatList,
-TouchableHighlight
+TouchableHighlight,ListItem
 } from 'react-native';
 import styleSheet from '../../styles/Styles';
 import ItemCasos from './ItemCasos'
@@ -37,7 +37,7 @@ export default class ListClient extends Component{
           <FlatList data = {this.state.casos}
             keyExtractor = {(x, i) => i}
             renderItem = {({ item }) =>
-              <ItemCasos style = {styles.itemConsult} numeroCaso = {item.number} nombreCaso = {item.name} nombreCorte = {item.courtName}/>
+              <ItemCasos numeroCaso = {item.number} nombreCaso = {item.name} nombreCorte = {item.courtName}/>
             }
           />
         </View>

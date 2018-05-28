@@ -27,11 +27,12 @@ type Props = {};
 export default class App extends Component<Props>{
   render() {
     return (
+      
+      <Splash/>
       <Router>
         <Stack key="root">
-          <Scene key="splash" component={Splash} hideNavBar/>
           <Scene key="logIn" component={LogIn} hideNavBar/>
-          <Scene key="registerScreen" component={RegisterScreen} hideNavBar/>
+          <Scene key="registerScreen" component={RegisterScreen}/>
           <Scene key="home" component={Home} hideNavBar/>
           <Scene key="registerScreen" component={RegisterScreen} rightTitle={'Guardar  '}/>
           <Scene key="agregarCaso" component={AgregarCaso} onRight={()=>{}} rightTitle={'Guardar  '}/>

@@ -24,24 +24,24 @@ export default class Clientes extends Component<Props>{
   this.setState({ isModalVisible: !this.state.isModalVisible });
   render() {
     return (
-      <TouchableHighlight onPress={this._toggleModal}>
-        <View style = {styles.containerList}>
-          <View>
+      <View>
+        <TouchableHighlight onPress={this._toggleModal}>
+          <View style={styles.containerList}>
             <Text style = {styles.tipoCliente}>{this.props.numeroCaso}</Text>
-          </View>
-          <View style = {styles.container}>
-            <Text style = {styles.nombreCliente}>{this.props.nombreCaso}</Text>
-            <Text style = {styles.telefonoCliente}>{this.props.nombreCorte}</Text>
-          </View>
-          <Modal isVisible={this.state.isModalVisible} onBackdropPress={() => this.setState({ isModalVisible: false })}>
-            <View>
-              <Text >Caso #{this.props.numeroCaso}</Text>
-              <Text >Clientes de ese caso</Text>
-              <Text >Agregar Clientes Al Caso</Text>
+            <View style = {styles.infoContainer}>
+              <Text style = {styles.nombreCliente}>{this.props.nombreCaso}</Text>
+              <Text style = {styles.telefonoCliente}>{this.props.nombreCorte}</Text>
             </View>
-          </Modal>
-        </View>
-      </TouchableHighlight>
+          </View>
+        </TouchableHighlight>
+        <Modal isVisible={this.state.isModalVisible} onBackdropPress={() => this.setState({ isModalVisible: false })}>
+          <View>
+            <Text >Caso #{this.props.numeroCaso}</Text>
+            <Text >Clientes de ese caso</Text>
+            <Text >Agregar Clientes Al Caso</Text>
+          </View>
+        </Modal>
+      </View>
     )
   }
 }

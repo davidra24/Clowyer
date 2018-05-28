@@ -103,22 +103,24 @@ export default StyleSheet.create({
   },
   containerList : {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'column',
   },
   tipoCliente : {
     backgroundColor: '#197278',
     color: "#FFFFFF",
-    justifyContent: 'center',
     textAlign: 'center',
-    fontSize: 40,
-    borderRadius: 50,
+    fontSize: 30,
+    borderRadius: 5,
+  },
+  infoContainer:{
+    flex: 1,
   },
   nombreCliente : {
+    flex: 1,
     fontSize: 20,
     textAlign: 'center',
   },
   telefonoCliente : {
+    flex: 1,
     fontSize: 10,
     textAlign: 'center',
   },
@@ -128,20 +130,21 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
   cameraContainer:{
-    flex : 1,
+    flex : 2,
     flexDirection : 'column'
   },
   view:{
     flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   capture:{
     flex: 0,
-    backgroundColor: 'steelblue',
+    backgroundColor: '#197278',
+    textAlign: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    color: 'red',
+    color: '#c44536',
     padding: 15,
     margin: 45
   }

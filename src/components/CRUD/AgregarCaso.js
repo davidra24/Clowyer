@@ -21,6 +21,7 @@ import styleSheet from '../../styles/Styles';
 import DatePicker from 'react-native-datepicker'
 import {existCase} from '../../validate/global'
 import {agregarCasos} from '../../webService/apis'
+import { Actions } from 'react-native-router-flux';
 
 const backgroundImg = require('../../assets/fondo.png');
 const styles = styleSheet;
@@ -38,8 +39,9 @@ export default class AgregarCaso extends Component<Props>{
       dateFinish: '',
       courtName: ''
     }
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    this.SaveCase = this.SaveCase.bind(this);
   }
+  static onRight() { const c = Actions.refs.agregarCaso; c.SaveCase(); }
   SaveCase(){
     if(!existCase(this.state.numberCase)){
       const db = {
@@ -50,24 +52,24 @@ export default class AgregarCaso extends Component<Props>{
         courtName : this.state.courtName
       }
       agregarCasos(db);
-      this.forceUpdateHandler();
+      Actions.home();
       ToastAndroid.show('Datos gaurdados satisfactoriamente', ToastAndroid.SHORT)
     }else{
       ToastAndroid.show('El cliente que desea guardar ya existe', ToastAndroid.SHORT)
-    }
+   }
   }
-  forceUpdateHandler(){
-    this.forceUpdate();
-  };
+  componentDidMount() {
+
+  }
   render() {
     return (
       <View style = {styles.container}>
         <ImageBackground source={images.background} style={styles.backgroundImage}>
           <View style = {styles.rectangle}>
             <Text style = {styles.bienvenido}>Numero de caso: </Text>
-            <TextInput style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(numberCase) => {this.setState({numberCase})}}/>
+            <TextInput keyboardType={'phone-pad'} style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(numberCase) => {this.setState({numberCase : numberCase})}}/>
             <Text style = {styles.bienvenido}>Nombre de caso: </Text>
-            <TextInput style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(nameCase) => {this.setState({nameCase})}}/>
+            <TextInput style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(nameCase) => {this.setState({nameCase : nameCase})}}/>
             <Text style = {styles.bienvenido}>Fecha de inicio: </Text>
             <DatePicker
                     style={{width: '100%'}}
@@ -119,8 +121,7 @@ export default class AgregarCaso extends Component<Props>{
                           onDateChange={(date) => {this.setState({dateFinish: date})}}
                         />
             <Text style = {styles.bienvenido}>Nombre de la corte: </Text>
-            <TextInput style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(courtName) => {this.setState({courtName})}}/>
-            <TouchableHighlight style={styles.botonGuardar} onPress={()=>this.SaveCase()}><Text>Guardar</Text></TouchableHighlight>
+            <TextInput style = {{width: '100%', height: 40, color: '#FFFFFF', fontSize: 15}} underlineColorAndroid='white' onChangeText={(courtName) => {this.setState({courtName : courtName})}}/>
           </View>
         </ImageBackground>
       </View>
