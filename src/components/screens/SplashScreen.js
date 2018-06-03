@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styleSheet from '../../styles/Styles';
 import {Actions} from 'react-native-router-flux'
+import {getItemCache} from '../../webService/storage'
 
 const styles = styleSheet;
 type Props = {};
@@ -21,10 +22,11 @@ export default class SplashScreen extends Component<Props> {
   }
   timeOut(){
     setTimeout(function() {
-      if(true){
+      const activeUser = getItemCache('activeUser')
+      if(activeUser==null){
         Actions.logIn();
       }else{
-        Actions.userScreen();
+        Actions.home();
       }
     }, 2000);
   }

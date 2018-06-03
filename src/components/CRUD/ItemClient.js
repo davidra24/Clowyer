@@ -37,7 +37,8 @@ export default class Clientes extends Component<Props>{
           </View>
           <Modal isVisible={this.state.isModalVisible} onBackdropPress={() => this.setState({ isModalVisible: false })}>
             <View>
-              <Text>Llamar</Text>
+              <Text style={styles.waittext}>this.props.nombreCliente</Text>
+              <Text style={styles.waittext}>this.props.telefonoCliente</Text>
             </View>
           </Modal>
         </View>

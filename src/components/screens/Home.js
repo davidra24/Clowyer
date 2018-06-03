@@ -15,7 +15,7 @@ export default class Home extends Component<Props> {
   }
   render() {
     return (
-      <UserScreen />
+      <UserScreen/>
     );
   }
 }

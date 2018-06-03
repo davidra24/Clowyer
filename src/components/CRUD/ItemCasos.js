@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import styleSheet from '../../styles/Styles';
 import Modal from 'react-native-modal';
-
 const styles = styleSheet;
 type Props = {};
 export default class Clientes extends Component<Props>{
@@ -36,9 +35,9 @@ export default class Clientes extends Component<Props>{
         </TouchableHighlight>
         <Modal isVisible={this.state.isModalVisible} onBackdropPress={() => this.setState({ isModalVisible: false })}>
           <View>
-            <Text >Caso #{this.props.numeroCaso}</Text>
-            <Text >Clientes de ese caso</Text>
-            <Text >Agregar Clientes Al Caso</Text>
+            <Text style={styles.waittext} >Caso #{this.props.numeroCaso}</Text>
+            <Text style={styles.waittext}>Nombre {this.props.nombreCaso}</Text>
+            <Text style={styles.waittext}>Corte {this.props.nombreCorte}</Text>
           </View>
         </Modal>
       </View>

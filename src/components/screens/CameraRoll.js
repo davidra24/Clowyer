@@ -19,11 +19,13 @@ import Modal from 'react-native-modal';
 import Camera from 'react-native-camera';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Actions } from 'react-native-router-flux';
+import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive'
+import {obtenerCasos} from '../../webService/apis'
 
 const styles = styleSheet;
 type Props = {};
 var photosTaken = [];
-
+var data = [];
 function sendPicture(){
   console.warn('enviar foto');
 }
@@ -32,6 +34,7 @@ export default class CameraRoll extends Component<Props>{
   constructor(props){
     super(props)
     this.state = {
+      Caso : '',
       isModalVisible : false,
       photosCaptured : []
     }
@@ -42,24 +45,34 @@ export default class CameraRoll extends Component<Props>{
     this.setState({
       photosCaptured : photosTaken
     })
-    console.warn("Fotos tomadas",this.state.photosCaptured);
+    this.setState({
+      isModalVisible: true
+    })
   }
   takePicture(){
     const options = {}
     this.camera.capture({metadata:options}).then((data) => {
       console.warn(data)
       photosTaken.push(data)
-      ToastAndroid.show('Archivo generado',ToastAndroid.SHORT)
     }).catch((error) => {
       console.warn(error)
     })
   }
+  componentWillMount(){
+    obtenerCasos()
+      .then((data) => this.setState({
+        Caso: data
+      }))
+  }
+  _toggleModal = () =>
+  this.setState({ isModalVisible: !this.state.isModalVisible });
   render() {
     return (
       <View style = {styles.cameraContainer}>
         <Camera ref={(cam) => {
           this.camera = cam
-        }} style={styles.view} aspect={Camera.constants.Aspect.fill}/>
+        }} style={styles.view}
+        aspect={Camera.constants.Aspect.fill}/>
         <Icon name="camera" size={30} color="#900" style={styles.capture} onPress={this.takePicture.bind(this)} />
       </View>
     )

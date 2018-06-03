@@ -1,4 +1,4 @@
-/**
+  /**
  * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
@@ -27,19 +27,18 @@ type Props = {};
 export default class App extends Component<Props>{
   render() {
     return (
-      
-      <Splash/>
-      <Router>
-        <Stack key="root">
-          <Scene key="logIn" component={LogIn} hideNavBar/>
-          <Scene key="registerScreen" component={RegisterScreen}/>
-          <Scene key="home" component={Home} hideNavBar/>
-          <Scene key="registerScreen" component={RegisterScreen} rightTitle={'Guardar  '}/>
-          <Scene key="agregarCaso" component={AgregarCaso} onRight={()=>{}} rightTitle={'Guardar  '}/>
-          <Scene key="agregarCliente" component={AgregarCliente} onRight={()=>{}} rightTitle={'Guardar  '}/>
-          <Scene key="cameraRoll" component={CameraRoll} onRight={()=>{}} rightTitle={'Guardar  '}/>
-        </Stack>
-      </Router>
+        <Router>
+          <Stack key="root">
+            <Scene key="splash" component={Splash} hideNavBar/>
+            <Scene key="logIn" component={LogIn} hideNavBar/>
+            <Scene key="registerScreen" component={RegisterScreen} onRight={()=>{}} rightTitle={'Guardar  '}/>
+            <Scene key="home" component={Home} hideNavBar/>
+            <Scene key="registerScreen" component={RegisterScreen} rightTitle={'Guardar  '}/>
+            <Scene key="agregarCaso" component={AgregarCaso} onRight={()=>{}} rightTitle={'Guardar  '}/>
+            <Scene key="agregarCliente" component={AgregarCliente} onRight={()=>{}} rightTitle={'Guardar  '}/>
+            <Scene key="cameraRoll" component={CameraRoll} onRight={()=>{}} rightTitle={'Guardar  '}/>
+          </Stack>
+        </Router>
     )
   }
 }

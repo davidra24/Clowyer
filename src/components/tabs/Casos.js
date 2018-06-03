@@ -30,7 +30,7 @@ export default class Casos extends Component<Props>{
       Case : []
     }
   }
-  componentDidMount(){
+  componentWillMount(){
     obtenerCasos()
       .then((data) => this.setState({
         Case: data

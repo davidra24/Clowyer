@@ -147,5 +147,10 @@ export default StyleSheet.create({
     color: '#c44536',
     padding: 15,
     margin: 45
+  },
+  waittext:{
+    color: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
   }
 });

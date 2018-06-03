@@ -1,6 +1,64 @@
 /* -------------------- URL'S webService --------------------------------*/
 const URLClient = 'http://clowyer.herokuapp.com/client';
 const URLCase = 'http://clowyer.herokuapp.com/case';
+const URLLawyerLogIn = 'http://clowyer.herokuapp.com/login-lawyer';
+const URLLawyerRegister = 'http://clowyer.herokuapp.com/lawyer';
+const URLDocument = 'http://clowyer.herokuapp.com/document';
+/*------------------------------ Log In ----------------------------------*/
+export async function logIn(mail, pass) {
+  var result = NULL;
+   fetch(URLLawyerLogIn, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+      'Accept-Encoding': '*',
+    },
+    body: JSON.stringify({
+        email : mail,
+        password: pass
+    }),
+  })
+  .then(response => response.json())
+  .then((responseData) => {
+    result = responseData.Lawyer;
+    console.warn('asignado? ',result);
+    console.warn('este.. ',responseData.Lawyer);
+  })
+  /*.then(lawyer => lawyer.map(abogado => ({
+      id : abogado._id,
+      identification: abogado.identification,
+      name: abogado.name,
+      speciality: abogado.speciality,
+      type: abogado.type,
+      phone: abogado.phone,
+      email: abogado.emails,
+      avatar: abogado.avatar
+  })))*/
+  .catch(error => console.warn(error))
+  .done()
+  console.warn('result: ..',result);
+  return result;
+};
+/*----------------------------Registrar clientes---------------------------*/
+export function register(db) {
+   fetch(URLLawyerRegister, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+      'Accept-Encoding': '*',
+    },
+    body: JSON.stringify({
+      identification : db.cedula,
+      name : db.nombre,
+      speciality : db.especialidad,
+      phone : db.telefono,
+      email : db.mail,
+      password : db.password,
+    }),
+  })
+};
 /* -------------------- Servicio Clientes --------------------------------*/
 export function obtenerClientes() {
   return fetch(URLClient)
