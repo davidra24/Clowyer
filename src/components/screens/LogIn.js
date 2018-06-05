@@ -109,7 +109,7 @@ export default class LogIn extends Component<Props> {
                 </View>
               </View>
           </ImageBackground>
-          <Modal isVisible={this.state.isModalVisible} onBackdropPress={() => this.setState({ isModalVisible: false })}>
+          <Modal isVisible={this.state.isModalVisible}>
             <View>
               <Text style={styles.waittext}>Iniciando sesión</Text>
               <ActivityIndicator style = {styles.spinner} size="large" color="#772e25" />

@@ -23,6 +23,7 @@ import PhoneInput from 'react-native-phone-input'
 import {agregarClientes} from '../../webService/apis'
 import {existClient} from '../../validate/global'
 import { Actions } from 'react-native-router-flux';
+import {getItemCache} from '../../webService/storage'
 
 const styles = styleSheet;
 type Props = {};
@@ -37,7 +38,8 @@ export default class AgregarCliente extends Component<Props>{
       nombre: ' ',
       tipocliente:  'N',
       date: ' ',
-      telefono: ' '
+      telefono: ' ',
+      idLawyer : getItemCache('activeUser')
    }
    this.SaveClient = this.SaveClient.bind(this);
   }

@@ -22,6 +22,7 @@ import DatePicker from 'react-native-datepicker'
 import {existCase} from '../../validate/global'
 import {agregarCasos} from '../../webService/apis'
 import { Actions } from 'react-native-router-flux';
+import {getItemCache} from '../../webService/storage'
 
 const backgroundImg = require('../../assets/fondo.png');
 const styles = styleSheet;
@@ -37,7 +38,8 @@ export default class AgregarCaso extends Component<Props>{
       nameCase:'',
       dateStart: '',
       dateFinish: '',
-      courtName: ''
+      courtName: '',
+      idLawyer : getItemCache('activeUser')
     }
     this.SaveCase = this.SaveCase.bind(this);
   }

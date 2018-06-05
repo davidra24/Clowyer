@@ -8,8 +8,9 @@ FlatList,
 TouchableHighlight,ListItem
 } from 'react-native';
 import styleSheet from '../../styles/Styles';
-import ItemCasos from './ItemCasos'
+import ItemDocument from './ItemDocument'
 import {setCases} from '../../validate/global'
+import {getCases} from '../../validate/global'
 import {getItemCache} from '../../webService/storage'
 
 const styles = styleSheet;
@@ -18,29 +19,27 @@ export default class ListClient extends Component{
   constructor(props){
     super(props);
     this.state = {
-      casos: [],
-      activeUser : getItemCache('activeUser')
+      documentos: [],
+      activeUser : getItemCache('activeUser'),
     }
   }
   componentWillMount() {
     const { content } = this.props;
-    this.setState({casos: content});
-    setCases(this.props.casos);
+    this.setState({documentos: content});
   }
   componentWillReceiveProps(newProps){
     this.setState({
-      casos :  this.props.casos
+      documentos :  this.props.documentos
     });
-    setCases(this.props.casos);
   }
   render() {
       return (
         <View>
-          <FlatList data = {this.state.casos}
+          <FlatList data = {this.state.documentos}
             keyExtractor = {(x, i) => i}
             renderItem = {({ item }) =>{
                 if(item.idLawyer == this.state.activeUser){
-                  return (<ItemCasos numeroCaso = {item.number} nombreCaso = {item.name} nombreCorte = {item.courtName}/>)
+                  return (<ItemDocument nombreDocumento = {item.name} url = {item.url}/>)
                 }
               }
             }

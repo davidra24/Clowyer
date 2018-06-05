@@ -17,6 +17,8 @@ import {
 import styleSheet from '../../styles/Styles';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
+import {obtenerDocumentos} from '../../webService/apis'
+import ListDocument from '../CRUD/ListDocument'
 
 const styles = styleSheet;
 type Props = {};
@@ -25,6 +27,7 @@ export default class Documentos extends Component<Props>{
   constructor(props){
     super(props)
     this.state = {
+      documentos : [],
       isModalVisible : false
     }
   }
@@ -38,9 +41,19 @@ export default class Documentos extends Component<Props>{
     Actions.cameraRoll();
   }
 
+  componentWillMount(){
+    obtenerDocumentos()
+      .then((data) => this.setState({
+        documentos: data
+      }))
+  }
+
   render() {
     return (
       <View style = {styles.container}>
+        <View >
+          <ListDocument documentos={this.state.documentos}/>
+        </View>
         <TouchableHighlight style={styles.addButton} onPress={this.openCameraRoll}>
           <Text style={{fontSize: 50, color: 'white'}}>+</Text>
         </TouchableHighlight>

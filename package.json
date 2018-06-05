@@ -19,7 +19,7 @@
     "react-native-modal": "^6.0.0",
     "react-native-phone-input": "^0.2.1",
     "react-native-vector-icons": "^4.6.0",
-    "react-native-zip-archive": "^2.2.4",
+    "react-native-zip-archive": "^2.2.5",
     "react-navigation": "^2.0.1"
   },
   "devDependencies": {

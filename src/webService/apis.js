@@ -70,7 +70,8 @@ export function obtenerClientes() {
         name: cliente.name,
         type: cliente.type,
         date: cliente.date,
-        phone: cliente.phone
+        phone: cliente.phone,
+        idLawyer: cliente.idLawyer
     })))
 };
 
@@ -87,7 +88,8 @@ export async function agregarClientes(db) {
         name: db.name,
         type: db.type,
         date: db.date,
-        phone: db.phone
+        phone: db.phone,
+        idLawyer: db.idLawyer
     }),
   }).then(response => response.json());
 }
@@ -118,7 +120,8 @@ export function obtenerCasos() {
         number: caso.number,
         dateStart: caso.dateStart,
         dateFinish: caso.dateFinish,
-        courtName: caso.courtName
+        courtName: caso.courtName,
+        idLawyer: caso.idLawyer
     })))
 };
 
@@ -135,7 +138,22 @@ export async function agregarCasos(db) {
       number: db.number,
       dateStart: db.dateStart,
       dateFinish: db.dateFinish,
-      courtName: db.courtName
+      courtName: db.courtName,
+      idLawyer: db.idLawyer
     }),
   }).then(response => response.json());
 }
+
+export function obtenerDocumentos() {
+  return fetch(URLDocument)
+    .then(response => response.json())
+    .then(data => data.Document)
+    .then(documentos => documentos.map(documento => ({
+        id :  documento._id,
+        name: documento.name,
+        type: documento.type,
+        caseNumber: documento.caseNumber,
+        idLawyer: documento.idLawyer,
+        url : documento.url
+    })))
+};

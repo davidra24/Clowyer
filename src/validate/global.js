@@ -15,6 +15,9 @@ export function existClient(cli){
 export function setCases(cas){
   existingCases.push(cas);
 }
+export function getCases(){
+  return existCases;
+}
 export function existCase(cas){
   let isExisting = false;
   for(let i = 0; i<existingCases.length; i++){
